@@ -1,3 +1,7 @@
+server/config.env
+.env
+*.env
+
 node_modules/
 venv/
 __pycache__/
@@ -6,3 +10,4 @@ __pycache__/
 .DS_Store
 *.log
 Eatelligent/
+
