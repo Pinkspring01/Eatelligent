@@ -17,6 +17,7 @@ import RecordList from "./components/RecordList";
 import PantryPage from "./components/PantryPage";  // Just added
 import FridgePage from "./components/FridgePage";  // Just added
 import RecipesPage from "./components/RecipesPage";  // Just added
+import AddIngredientPage from "./components/AddIngredientPage";  // Just added
 import "./index.css";
 
 
@@ -43,7 +44,7 @@ const router = createBrowserRouter([
       },                       
       {
         path: "/create",
-        element: <Record />,
+        element: <AddIngredientPage />,
       },
       {
         path: "/edit/:id",
