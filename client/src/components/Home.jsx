@@ -21,16 +21,16 @@ export default function Home() {
 
         <div className="features">
           <div className="feature-card">
-            <h3>📝 Easy Management</h3>
-            <p>Add, edit, and organize your recipes</p>
+            <h3>Pantry</h3>
+            <p>Check out what's in your pantry now!</p>
           </div>
           <div className="feature-card">
-            <h3>🔍 Quick Search</h3>
-            <p>Find recipes instantly</p>
+            <h3>Fridge</h3>
+            <p>Check out what's in your fridge now!</p>
           </div>
           <div className="feature-card">
-            <h3>⭐ Save Favorites</h3>
-            <p>Keep track of your best recipes</p>
+            <h3>Recipes</h3>
+            <p>See what's recipes are in store for you!</p>
           </div>
         </div>
       </div>
