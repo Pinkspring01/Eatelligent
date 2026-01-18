@@ -18,6 +18,7 @@ import PantryPage from "./components/PantryPage";  // Just added
 import FridgePage from "./components/FridgePage";  // Just added
 import RecipesPage from "./components/RecipesPage";  // Just added
 import AddIngredientPage from "./components/AddIngredientPage";  // Just added
+import UserProfilePage from './components/UserProfilePage';
 import "./index.css";
 
 
@@ -41,6 +42,10 @@ const router = createBrowserRouter([
       {
         path: "/recipes",         // Just added
         element: <RecipesPage />  // Just added
+      },
+      {
+        path: "/profile",
+        element: <UserProfilePage />,
       },                       
       {
         path: "/create",

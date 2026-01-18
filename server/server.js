@@ -54,7 +54,7 @@ app.use(passport.session());
 passportConfig(passport);
 
 // Routes
-app.use("/record", records);
+app.use("/ingredient", records);
 app.use("/auth", authRoutes);
 
 // Test route

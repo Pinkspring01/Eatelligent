@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import { Outlet } from 'react-router-dom';
 import Login from './components/Login';
+import Navbar from './components/Navbar';
 import './App.css';
 
 interface User {
@@ -76,9 +78,10 @@ function App() {
         </div>
       </header>
       
+      <Navbar />
+      
       <main className="app-main">
-        <h2>Your Ingredients</h2>
-        <p>Ingredient management coming soon...</p>
+        <Outlet />
       </main>
     </div>
   );
