@@ -63,14 +63,6 @@ export default function FridgeList() {
                 Delete
               </button>
             </div>
-            {f_item.expiringItems.length > 0 && (
-              <div className="expiring-container">
-                <span className="expiring-text">
-                  Uses expiring: {f_item.expiringItems.join(', ')}
-                </span>
-              </div>
-            )}
-
             <p className="view-details">Tap for details</p>
           </div>
         ))}
@@ -99,15 +91,6 @@ export default function FridgeList() {
                 <span className="info-text">Quantity: {selectedItem.quantity}</span>
                 <span className="info-text">Expiration Date: {selectedItem.date}</span>
               </div>
-
-              {selectedItem.expiringItems.length > 0 && (
-                <div className="warning-box">
-                  <h4 className="warning-title">Expiring Soon</h4>
-                  <p className="warning-text">
-                    {selectedItem.expiringItems.join(', ')}
-                  </p>
-                </div>
-              )}
             </div>
           </div>
         </div>

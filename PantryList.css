@@ -34,7 +34,6 @@
   gap: 16px;
 }
 
-/* Recipe Card */
 .ingredient-card {
   background-color: #fff;
   border-radius: 12px;
@@ -80,18 +79,6 @@
 
 .delete-button-small:active {
     background-color: #ffcdd2;
-}
-
-.expiring-container {
-  background-color: #fff3e0;
-  padding: 10px;
-  border-radius: 6px;
-  margin-bottom: 10px;
-}
-
-.expiring-text {
-  font-size: 13px;
-  color: #e65100;
 }
 
 .view-details {
@@ -205,27 +192,6 @@
 .info-text {
   font-size: 14px;
   color: #666;
-}
-
-.warning-box {
-  background-color: #fff3e0;
-  padding: 16px;
-  border-radius: 10px;
-  margin-bottom: 24px;
-  border-left: 4px solid #ff9800;
-}
-
-.warning-title {
-  font-size: 16px;
-  font-weight: 600;
-  color: #e65100;
-  margin: 0 0 8px 0;
-}
-
-.warning-text {
-  font-size: 14px;
-  color: #e65100;
-  margin: 0;
 }
 
 @media (max-width: 768px) {
