@@ -1,3 +1,10 @@
+Commands to start webpage:
+Execute the following command in the server directory:
+  node --env-file=config.env server
+In a new terminal, go to the client directory and run the command:
+  npm run dev
+This should take you to the working website. 
+
 mongodb+srv://kamalikade25:<db_password>@projectcluster0.t9cvepc.mongodb.net/?appName=ProjectCluster0
 
 Replace <db_password> with the password for the kamalikade25 database user. Ensure any option params are URL encoded.
