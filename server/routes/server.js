@@ -4,17 +4,15 @@ import dotenv from "dotenv";
 import session from "express-session";
 import passport from "passport";
 import mongoose from "mongoose";
-import profile from "./routes/profile.js";
-import recipeRoutes from "./routes/recipe.js";
-
 
 // Load environment variables
 dotenv.config({ path: './config.env' });
 
-
 // Import routes
-import records from "./routes/record.js";
+import records from "./routes/ingredient.js";
 import authRoutes from "./routes/auth.js";
+import profileRoutes from "./routes/profile.js";
+import recipeRoutes from "./routes/recipe.js";
 
 // Import passport config
 import passportConfig from "./config/passport.js";
@@ -22,25 +20,22 @@ import passportConfig from "./config/passport.js";
 const PORT = process.env.PORT || 5050;
 const app = express();
 
-app.use("/profile", profile);
-app.use("/api", recipeRoutes);
-
 // Connect to MongoDB
 mongoose.connect(process.env.ATLAS_URI)
-.then(() => console.log('MongoDB connected'))
-.catch(err => console.error('MongoDB connection error:', err));
+  .then(() => console.log('MongoDB connected'))
+  .catch(err => console.error('MongoDB connection error:', err));
 
-// Middleware
+// Middleware - CORS MUST BE BEFORE ROUTES
 app.use(cors({
-  origin: process.env.CLIENT_URL || 'http://localhost:5173',
-  credentials: true
+  origin: 'http://localhost:5173', // Your frontend URL
+  credentials: true // Allow cookies and authorization headers
 }));
 app.use(express.json());
 
 // Session middleware (must be before passport)
 app.use(
   session({
-    secret: process.env.SESSION_SECRET,
+    secret: process.env.SESSION_SECRET || 'your-secret-key-here',
     resave: false,
     saveUninitialized: false,
     cookie: {
@@ -59,6 +54,8 @@ passportConfig(passport);
 // Routes
 app.use("/ingredient", records);
 app.use("/auth", authRoutes);
+app.use("/profile", profileRoutes);
+app.use("/api", recipeRoutes);
 
 // Test route
 app.get('/', (req, res) => {

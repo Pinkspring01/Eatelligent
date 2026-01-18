@@ -4,45 +4,106 @@ import { ObjectId } from "mongodb";
 
 const router = express.Router();
 
-// Get all ingredients
+// Middleware to check if user is authenticated
+const isAuthenticated = (req, res, next) => {
+  if (req.isAuthenticated()) {
+    return next();
+  }
+  res.status(401).json({ error: "Not authenticated" });
+};
+
+// Apply authentication to all routes
+router.use(isAuthenticated);
+
+// Get all ingredients for the logged-in user
 router.get("/", async (req, res) => {
-  let collection = await db.collection("ingredients");
-  let results = await collection.find({}).toArray();
-  res.send(results).status(200);
+  try {
+    let collection = db.collection("ingredients");
+    let results = await collection.find({ userId: req.user._id.toString() }).toArray();
+    res.status(200).send(results);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Error fetching ingredients");
+  }
 });
 
-// Get a single ingredient by id
+// Get all fridge ingredients for the logged-in user
+router.get("/fridge", async (req, res) => {
+  try {
+    let collection = db.collection("ingredients");
+    let results = await collection.find({ 
+      userId: req.user._id.toString(),
+      location: "fridge" 
+    }).toArray();
+    res.status(200).send(results);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Error fetching fridge items");
+  }
+});
+
+// Get all pantry ingredients for the logged-in user
+router.get("/pantry", async (req, res) => {
+  try {
+    let collection = db.collection("ingredients");
+    let results = await collection.find({ 
+      userId: req.user._id.toString(),
+      location: "pantry" 
+    }).toArray();
+    res.status(200).send(results);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Error fetching pantry items");
+  }
+});
+
+// Get a single ingredient by id (for the logged-in user only)
 router.get("/:id", async (req, res) => {
-  let collection = await db.collection("ingredients");
-  let query = { _id: new ObjectId(req.params.id) };
-  let result = await collection.findOne(query);
+  try {
+    let collection = db.collection("ingredients");
+    let query = { 
+      _id: new ObjectId(req.params.id),
+      userId: req.user._id.toString()
+    };
+    let result = await collection.findOne(query);
 
-  if (!result) res.send("Not found").status(404);
-  else res.send(result).status(200);
+    if (!result) {
+      res.status(404).send("Not found");
+    } else {
+      res.status(200).send(result);
+    }
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Error fetching ingredient");
+  }
 });
 
-// Create a new ingredient
+// Create a new ingredient for the logged-in user
 router.post("/", async (req, res) => {
   try {
     let newDocument = {
+      userId: req.user._id.toString(), // Add user ID
       location: req.body.location,
       ingredient_name: req.body.ingredient_name,
       ingredient_quantity: req.body.ingredient_quantity,
       ingredient_date: req.body.ingredient_date,
     };
-    let collection = await db.collection("ingredients");
+    let collection = db.collection("ingredients");
     let result = await collection.insertOne(newDocument);
-    res.send(result).status(204);
+    res.status(201).send(result); // Changed to 201 (Created)
   } catch (err) {
     console.error(err);
     res.status(500).send("Error adding ingredient");
   }
 });
 
-// Update an ingredient by id
+// Update an ingredient by id (for the logged-in user only)
 router.patch("/:id", async (req, res) => {
   try {
-    const query = { _id: new ObjectId(req.params.id) };
+    const query = { 
+      _id: new ObjectId(req.params.id),
+      userId: req.user._id.toString() // Ensure user owns this ingredient
+    };
     const updates = {
       $set: {
         location: req.body.location,
@@ -52,22 +113,35 @@ router.patch("/:id", async (req, res) => {
       },
     };
 
-    let collection = await db.collection("ingredients");
+    let collection = db.collection("ingredients");
     let result = await collection.updateOne(query, updates);
-    res.send(result).status(200);
+    
+    if (result.matchedCount === 0) {
+      res.status(404).send("Ingredient not found or you don't have permission");
+    } else {
+      res.status(200).send(result);
+    }
   } catch (err) {
     console.error(err);
     res.status(500).send("Error updating ingredient");
   }
 });
 
-// Delete an ingredient
+// Delete an ingredient (for the logged-in user only)
 router.delete("/:id", async (req, res) => {
   try {
-    const query = { _id: new ObjectId(req.params.id) };
+    const query = { 
+      _id: new ObjectId(req.params.id),
+      userId: req.user._id.toString() // Ensure user owns this ingredient
+    };
     const collection = db.collection("ingredients");
     let result = await collection.deleteOne(query);
-    res.send(result).status(200);
+    
+    if (result.deletedCount === 0) {
+      res.status(404).send("Ingredient not found or you don't have permission");
+    } else {
+      res.status(200).send(result);
+    }
   } catch (err) {
     console.error(err);
     res.status(500).send("Error deleting ingredient");
