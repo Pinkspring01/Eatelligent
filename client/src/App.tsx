@@ -1,74 +1,87 @@
-/*import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useState, useEffect } from 'react';
+import Login from './components/Login';
+import './App.css';
 
-function App() {
-  const [count, setCount] = useState(0)
-
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+interface User {
+  id: string;
+  email: string;
+  name?: string;
+  picture?: string;
 }
 
-export default <App></App>
+function App() {
+  const [user, setUser] = useState<User | null>(null);
+  const [loading, setLoading] = useState(true);
 
-import { Outlet } from "react-router-dom";
-import Navbar from "./components/Navbar";
+  useEffect(() => {
+    fetch('http://localhost:5050/auth/user', {
+      credentials: 'include'
+    })
+      .then(res => res.json())
+      .then(data => {
+        if (data.user) {
+          setUser(data.user);
+        }
+        setLoading(false);
+      })
+      .catch(err => {
+        console.error('Auth check failed:', err);
+        setLoading(false);
+      });
+  }, []);
 
-const App = () => {
+  const handleLogout = () => {
+    fetch('http://localhost:5050/auth/logout', {
+      credentials: 'include'
+    })
+      .then(() => {
+        setUser(null);
+        window.location.href = '/';
+      });
+  };
+
+  if (loading) {
+    return (
+      <div style={{ 
+        display: 'flex', 
+        justifyContent: 'center', 
+        alignItems: 'center', 
+        height: '100vh' 
+      }}>
+        <h2>Loading...</h2>
+      </div>
+    );
+  }
+
+  if (!user) {
+    return <Login />;
+  }
+
   return (
-    <div className="w-full p-6">
-      <Navbar />
-      <Outlet />
+    <div className="App">
+      <header className="app-header">
+        <h1>🍽️ Eatelligent Dashboard</h1>
+        <div className="user-info">
+          {user.picture && (
+            <img 
+              src={user.picture} 
+              alt={user.name || 'User'} 
+              className="user-avatar"
+            />
+          )}
+          <span>Welcome, {user.name || user.email}!</span>
+          <button onClick={handleLogout} className="logout-btn">
+            Logout
+          </button>
+        </div>
+      </header>
+      
+      <main className="app-main">
+        <h2>Your Ingredients</h2>
+        <p>Ingredient management coming soon...</p>
+      </main>
     </div>
   );
-};
-export default App
+}
 
-import { Outlet } from "react-router-dom";
-import Navbar from "./components/Navbar";
-
-const App = () => {
-  return (
-    <div className="w-full p-6">
-      <Navbar />
-      <Outlet />
-    </div>
-  );
-};
-export default <App>*/
-
-import { Outlet } from "react-router-dom";
-import Navbar from "./components/Navbar";
-
-const App = () => {
-  return (
-    <div className="w-full p-6">
-      <Navbar />
-      <Outlet />
-    </div>
-  );
-};
-export default App
+export default App;
