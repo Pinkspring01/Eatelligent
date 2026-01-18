@@ -1,0 +1,245 @@
+
+.container {
+  min-height: 100vh;
+  background-color: #f5f5f5;
+}
+
+.header {
+  background-color: #fff;
+  padding: 30px 20px;
+  border-bottom: 1px solid #e0e0e0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.header-title {
+  font-size: 32px;
+  font-weight: bold;
+  color: #333;
+  margin: 0 0 8px 0;
+}
+
+.header-subtitle {
+  font-size: 14px;
+  color: #666;
+  margin: 0;
+}
+
+
+.ingredient-list {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 16px;
+}
+
+/* Recipe Card */
+.ingredient-card {
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.ingredient-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.ingredient-name {
+  font-size: 20px;
+  font-weight: 600;
+  color: #333;
+  margin: 0;
+  flex: 1;
+}
+
+.delete-button-small {
+    background-color: transparent;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    padding: 4px 8px;
+    border-radius: 6px;
+    transition: background-color 0.2s;
+}
+
+.delete-button-small:hover {
+    background-color: #ffebee;
+}
+
+.delete-button-small:active {
+    background-color: #ffcdd2;
+}
+
+.expiring-container {
+  background-color: #fff3e0;
+  padding: 10px;
+  border-radius: 6px;
+  margin-bottom: 10px;
+}
+
+.expiring-text {
+  font-size: 13px;
+  color: #e65100;
+}
+
+.view-details {
+  font-size: 14px;
+  color: #1976d2;
+  font-weight: 500;
+  margin: 8px 0 0 0;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.modal-content {
+  background-color: #fff;
+  border-radius: 16px;
+  max-width: 600px;
+  width: 100%;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.modal-title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  margin: 0;
+  flex: 1;
+}
+
+.modal-header-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.delete-button {
+    background-color: #f44336;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.delete-button:hover {
+    background-color: #d32f2f;
+}
+
+.delete-button:active {
+    background-color: #c62828;
+}
+
+.close-button {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: #f5f5f5;
+  border: none;
+  font-size: 20px;
+  color: #666;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.close-button:hover {
+  background-color: #e0e0e0;
+}
+
+.modal-body {
+  padding: 24px;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.info-section {
+  display: flex;
+  justify-content: space-around;
+  background-color: #f5f5f5;
+  padding: 16px;
+  border-radius: 10px;
+  margin-bottom: 24px;
+}
+
+.info-text {
+  font-size: 14px;
+  color: #666;
+}
+
+.warning-box {
+  background-color: #fff3e0;
+  padding: 16px;
+  border-radius: 10px;
+  margin-bottom: 24px;
+  border-left: 4px solid #ff9800;
+}
+
+.warning-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #e65100;
+  margin: 0 0 8px 0;
+}
+
+.warning-text {
+  font-size: 14px;
+  color: #e65100;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .ingredient-list {
+    grid-template-columns: 1fr;
+    padding: 12px;
+  }
+
+  .modal-content {
+    max-height: 95vh;
+    margin: 10px;
+  }
+
+  .header-title {
+    font-size: 24px;
+  }
+}
