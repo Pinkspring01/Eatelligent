@@ -1,20 +1,47 @@
-Commands to start webpage:<br>
-Execute the following command in the server directory:<br>
-  <in>node --env-file=config.env server<br>
-In a new terminal, go to the client directory and run the command:<br>
-  <in>npm run dev<br>
-This should take you to the working website.<br> 
+# Eatelligent
 
-mongodb+srv://kamalikade25:<db_password>@projectcluster0.t9cvepc.mongodb.net/?appName=ProjectCluster0
+# Project Descrption:
+According to studies by the NRDC and Harvard Law, approximately 91% of individuals discard perfectly good food due to confusing labels like “sell by” and “best by.” This contributes significantly to food waste, which eventually rots in landfills and emits potent greenhouse gases. Eatelligent is an online platform designed to combat the climate crisis by helping users manage food waste. Users can track their groceries and receive notifications for items nearing expiration. What sets Eatelligent apart is its ability to generate custom recipes that specifically prioritize those soon-to-expire ingredients.
 
-Replace <db_password> with the password for the kamalikade25 database user. Ensure any option params are URL encoded.
+# Tracks
+ - Sustainability
+ - Best SlugHacks
+ - Use of GenAI
+ - Most Start-up Potential
+ - Best Use of MongoDB
 
-Client->postcss.config.js may have issues. Code writted by Chat. 
+# Tech Stack:
+Frontend: JavaScript, CSS (React/Vite)
 
-Client->src->index.css may have issues 
+Database: MongoDB Atlas to store user preferences, ingredients, and recipe data.
 
-Client->src->main.tsx may have issues beceause converting from JS to TS
+Authentication: Firebase Authentication for secure sign-up, login, and session management.
 
-Client->src->App.jsx may have issues because converting from JA to TS
+LLM: HuggingFace (Llama-3.1-8B-Instruct) to generate dynamic, user-specific recipes based on inventory.
 
-Client->src->components->Record.jsx has different code about POST methood compared to example
+# Challenges & Learnings:
+
+We originally envisioned Eatelligent as a mobile application. However, due to the complexities of converting a MERN stack web app into a mobile environment within the hackathon time constraints, we pivoted to a high-quality web application.
+
+# What We Learned:
+
+As first-time users of the MERN stack, we gained deep experience in connecting a full-stack architecture with external services. We successfully integrated Firebase for security and LLMs for intelligent response    generation, learning how to manage data flow between the database and the AI.
+
+# What’s Next for Eatelligent:
+
+1. Mobile Conversion: Porting the web experience to a native mobile app.
+
+2. Computer Vision: Implementing an image-recognition system so users can photograph groceries to auto-extract data instead of manual entry.
+
+3. Deployment: Launching a live version via Vercel.
+
+# Steps to Run the Application:
+
+1. Start the Server Navigate to the server directory in your terminal:
+   cd server
+   npm install
+   node --env-file=.env server
+3. Start the Client Open a new terminal window and navigate to the client directory:
+   cd client
+   npm run dev
+4. Access the App Click the local link provided in your terminal (e.g., http://localhost:5173) to view the live project.
