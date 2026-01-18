@@ -1,7 +1,7 @@
 # Eatelligent
 
 # Project Descrption:
-According to studies by the NRDC and Harvard Law, approximately 91% of individuals discard perfectly good food due to confusing labels like “sell by” and “best by.” This contributes significantly to food waste, which eventually rots in landfills and emits potent greenhouse gases. Eatelligent is an online platform designed to combat the climate crisis by helping users manage food waste. Users can track their groceries and receive notifications for items nearing expiration. What sets Eatelligent apart is its ability to generate custom recipes that specifically prioritize those soon-to-expire ingredients.
+According to studies by the NRDC and Harvard Law, approximately 91% of individuals discard perfectly good food due to confusing labels like “sell by” and “best by.” This contributes significantly to food waste, which eventually rots in landfills and emits potent greenhouse gases. Eatelligent is an online platform designed to combat the climate crisis by helping users manage food waste. Users can track their groceries and generates custom recipes that specifically prioritize those soon-to-expire ingredients.
 
 # Tracks
  - Sustainability
@@ -11,13 +11,13 @@ According to studies by the NRDC and Harvard Law, approximately 91% of individua
  - Best Use of MongoDB
 
 # Tech Stack:
-Frontend: JavaScript, CSS (React/Vite)
+Frontend: TypeScript, JavaScript, CSS (React/Vite)
 
 Database: MongoDB Atlas to store user preferences, ingredients, and recipe data.
 
 Authentication: Firebase Authentication for secure sign-up, login, and session management.
 
-LLM: HuggingFace (Llama-3.1-8B-Instruct) to generate dynamic, user-specific recipes based on inventory.
+LLM: Python, HuggingFace (Llama-3.1-8B-Instruct) to generate dynamic, user-specific recipes based on inventory.
 
 # Challenges & Learnings:
 
@@ -38,6 +38,8 @@ As first-time users of the MERN stack, we gained deep experience in connecting a
 # Steps to Run the Application:
 
 1. Start the Server Navigate to the server directory in your terminal:
+   python recipe_generation.py
+2. Run these two commands:
    cd server
    npm install
    node --env-file=.env server
