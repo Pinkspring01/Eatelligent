@@ -14,6 +14,7 @@ import App from "./App";
 import Home from "./components/Home";
 import Record from "./components/Record";
 import RecordList from "./components/RecordList";
+import PantryPage from "./components/PantryPage";  // Just added
 import "./index.css";
 
 
@@ -30,6 +31,10 @@ const router = createBrowserRouter([
         path: "/recipes",
         element: <RecordList />,
       },
+      {
+        path: "/pantry",           // Just added
+        element: <PantryPage />,   // Just added
+      },                           // Just added
       {
         path: "/create",
         element: <Record />,

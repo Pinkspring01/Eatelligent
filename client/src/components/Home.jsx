@@ -20,10 +20,11 @@ export default function Home() {
         </div>
 
         <div className="features">
-          <div className="feature-card">
-            <h3>Pantry</h3>
-            <p>Check out what's in your pantry now!</p>
-          </div>
+            <Link to="/pantry" className="feature-card">
+                <h3>Pantry</h3>
+                <p>Check out what's in your pantry now!</p>
+            </Link>
+
           <div className="feature-card">
             <h3>Fridge</h3>
             <p>Check out what's in your fridge now!</p>

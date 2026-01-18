@@ -1,6 +1,11 @@
 import React, { useState } from 'react';
 import './PantryList.css';
 
+pantry_ingredients= [  // Sample data; replace with actual data source
+  { id: 1, item_id: 101, name: 'Rice', quantity: '2 kg', date: '2024-12-01' },
+  { id: 2, item_id: 102, name: 'Beans', quantity: '1 kg', date: '2024-11-15' },
+  // Add more items as needed
+];
 export default function PantryList() {
   const [modalVisible, setModalVisible] = useState(false);
   const [selectedItem, setSelectedItem] = useState(null);
