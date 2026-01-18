@@ -5,15 +5,16 @@ import session from "express-session";
 import passport from "passport";
 import mongoose from "mongoose";
 
+// Load environment variables
+dotenv.config({ path: './config.env' });
+
+
 // Import routes
 import records from "./routes/record.js";
 import authRoutes from "./routes/auth.js";
 
 // Import passport config
 import passportConfig from "./config/passport.js";
-
-// Load environment variables
-dotenv.config({ path: './config.env' });
 
 const PORT = process.env.PORT || 5050;
 const app = express();
