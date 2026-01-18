@@ -15,6 +15,8 @@ import Home from "./components/Home";
 import Record from "./components/Record";
 import RecordList from "./components/RecordList";
 import PantryPage from "./components/PantryPage";  // Just added
+import FridgePage from "./components/FridgePage";  // Just added
+import RecipesPage from "./components/RecipesPage";  // Just added
 import "./index.css";
 
 
@@ -28,13 +30,17 @@ const router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: "/recipes",
-        element: <RecordList />,
-      },
-      {
         path: "/pantry",           // Just added
         element: <PantryPage />,   // Just added
-      },                           // Just added
+      },    
+      {
+        path: "/fridge",          // Just added
+        element: <FridgePage />,  // Just added
+      },
+      {
+        path: "/recipes",         // Just added
+        element: <RecipesPage />  // Just added
+      },                       
       {
         path: "/create",
         element: <Record />,

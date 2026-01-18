@@ -11,11 +11,8 @@ export default function Home() {
         <p className="tagline">Manage your recipes and ingredients with ease</p>
         
         <div className="home-buttons">
-          <Link to="/recipes" className="btn btn-primary">
-            View Recipes
-          </Link>
-          <Link to="/create" className="btn btn-secondary">
-            Add New Recipe
+          <Link to="/create" className="btn add-btn">
+            Add New Ingredient
           </Link>
         </div>
 
@@ -25,14 +22,14 @@ export default function Home() {
                 <p>Check out what's in your pantry now!</p>
             </Link>
 
-          <div className="feature-card">
-            <h3>Fridge</h3>
-            <p>Check out what's in your fridge now!</p>
-          </div>
-          <div className="feature-card">
-            <h3>Recipes</h3>
-            <p>See what's recipes are in store for you!</p>
-          </div>
+            <Link to="/fridge" className="feature-card">
+              <h3>Fridge</h3>
+              <p>Check out what's in your fridge now!</p>
+            </Link>
+            <Link to="/recipes" className="feature-card">
+              <h3>Recipes</h3>
+              <p>See what's recipes are in store for you!</p>
+            </Link>
         </div>
       </div>
     </div>

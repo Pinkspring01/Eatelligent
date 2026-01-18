@@ -6,8 +6,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 def get_recipe_generator_prompt():
-    system_prompt = """You are an expert chef and nutrionist specializing in zero-waste cooking.
-    Your task is to create practical, delicious recipes using available ingredients.
+    system_prompt = """Your task is to create practical, delicious recipes using available ingredients.
     RULES: 
     1. MINMIZE the number of ingredients that are not in the provided fridge/pantry list
     2. Priortize ingredients that expire soonest (check expiration dates)
@@ -40,7 +39,7 @@ def get_recipe_generator_prompt():
                     "Step 1: Do this..."
                     "Step 2: DO that..."
                 ],
-                "uses_expiring_soon": ["ingredient1", "ingredient2"],
+                "expiring_soon": ["ingredient1", "ingredient2"],
                 "dietary_info": {
                     "vegetarian": true,
                     "vegan": false,
@@ -53,7 +52,7 @@ def get_recipe_generator_prompt():
      
     GOOD PRACTICES:
     - Minimize food waste by using expiring items first
-    - Suggest creative combinations
+    - Creative titles for meals
     - Have diversity in recipes in terms of time, cuisine, and diffculty level"""
 
     return system_prompt
