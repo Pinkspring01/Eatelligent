@@ -4,6 +4,7 @@ import dotenv from "dotenv";
 import session from "express-session";
 import passport from "passport";
 import mongoose from "mongoose";
+import profile from "./routes/profile.js";
 
 // Load environment variables
 dotenv.config({ path: './config.env' });
@@ -18,6 +19,8 @@ import passportConfig from "./config/passport.js";
 
 const PORT = process.env.PORT || 5050;
 const app = express();
+
+app.use("/profile", profile);
 
 // Connect to MongoDB
 mongoose.connect(process.env.ATLAS_URI)
